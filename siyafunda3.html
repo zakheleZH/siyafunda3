@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syafunda | We Are Learning - Education Solutions</title>
+
+    <!-- External CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	
+
+    <style>
+        :root {
+            --sya-green: #2E7D32;
+            --sya-yellow: #F9A825;
+            --sya-blue: #1565C0;
+            --sya-red: #E21E26;
+            --sya-dark: #1E293B;
+            --sya-light-grey: #F8FAFC;
+            --sya-white: #ffffff;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--sya-dark);
+            background-color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Global Utility --- */
+        section { padding: 70px 0; } /* Reduced from standard 100px for tighter feel */
+        .text-sya-green { color: var(--sya-green); }
+        .bg-sya-light { background-color: var(--sya-light-grey); }
+
+        /* --- Navbar --- */
+        .navbar {
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #eee;
+        }
+        .navbar-brand img { height: 45px; }
+        .nav-link {
+            font-weight: 600;
+            color: var(--sya-dark) !important;
+            margin: 0 10px;
+        }
+        .btn-partner {
+            background-color: var(--sya-yellow);
+            color: white !important;
+            font-weight: 700;
+            border-radius: 50px;
+            padding: 10px 25px;
+            transition: 0.3s;
+        }
+        .btn-partner:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(249, 168, 37, 0.4); }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 140px 0 70px;
+            background: linear-gradient(to right, #ffffff, #f7faf7);
+        }
+        .hero-tagline {
+            color: var(--sya-green);
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+        .hero-img {
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            width: 100%;
+        }
+
+        /* --- Stats Card --- */
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #f1f5f9;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .stat-num { font-size: 2.5rem; font-weight: 800; color: var(--sya-green); }
+
+        /* --- Pillar Cards --- */
+        .pillar-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            height: 100%;
+            border-bottom: 4px solid transparent;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            transition: 0.3s ease-in-out;
+        }
+        .pillar-card:hover { border-bottom-color: var(--sya-green); transform: translateY(-5px); }
+        .pillar-icon { font-size: 2.5rem; margin-bottom: 20px; }
+
+        /* --- Leadership Section (Side by Side) --- */
+        .leader-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            border: 1px solid #f1f5f9;
+            height: 100%;
+        }
+        .leader-img { width: 40%; height: 100%; object-fit: cover; min-height: 300px;}
+        .leader-body { width: 60%; padding: 30px; }
+
+        /* --- Contact Form --- */
+        .contact-wrapper {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+        }
+        .form-control {
+            border-radius: 12px;
+            padding: 15px;
+            border: 2px solid #f1f5f9;
+            background: #f8fafc;
+        }
+        .form-control:focus { border-color: var(--sya-green); box-shadow: none; background: #fff; }
+
+        /* --- Light Footer --- */
+        footer {
+            background-color: var(--sya-light-grey);
+            padding: 60px 0 30px;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+        }
+        .footer-logo { font-weight: 800; font-size: 1.5rem; color: var(--sya-dark); }
+        .footer-link { color: #64748b; text-decoration: none; display: block; margin-bottom: 8px; font-weight: 500; }
+        .footer-link:hover { color: var(--sya-green); }
+
+        @media (max-width: 991px) {
+            .hero-title { font-size: 2.5rem; }
+            .leader-card { flex-direction: column; }
+            .leader-img, .leader-body { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <span class="footer-logo">Sya<span class="text-sya-green">funda</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#story">Our Story</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#solutions">Solutions</a></li>
+					<li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#leadership">Leadership</a></li>
+                    <li class="nav-item ms-lg-3"><a class="nav-link btn-partner" href="#contact">Partner With Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
+                    <span class="hero-tagline">ESTABLISHED IN 2013</span>
+                    <h1 class="hero-title">Syafunda is a <span class="text-sya-green">South African</span> education leader.</h1>
+                    <p class="lead text-muted">We are committed to improving learner outcomes through curriculum-aligned content, digital innovation, and professional support.</p>
+                    <div class="mt-4">
+                        <a href="#solutions" class="btn btn-dark btn-lg px-4 me-2 rounded-3">Our Solutions</a>
+                        <a href="#contact" class="btn btn-outline-success btn-lg px-4 rounded-3">Get in Touch</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="zoom-in" data-aos-duration="800">
+                    <!-- Placeholder using a clean educational image -->
+                    <img src="Images/1.jpg" alt="Students Learning" class="hero-img">
+                </div>
+            </div>
+        </div>
+    </section>
+	
+    <!-- Legacy Section -->
+    <section id="story" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <h2 class="fw-bold mb-4">More Than A Decade Of Educational Impact</h2>
+                    <p>Syafunda, meaning <strong>"We Are Learning"</strong>, was founded in 2013 with a vision to expand access to quality education through innovative digital solutions.</p>
+                    <p>Founded by Zakheni Ngubo, Syafunda emerged from a simple but powerful belief: every learner deserves access to quality education regardless of geography, income, or circumstance.</p>
+                </div>
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="pillar-box">
+                        <h5>2013 — Founded</h5>
+                        <p class="small text-muted mb-0">The journey began with a vision for digital accessibility.</p>
+                    </div>
+                    <div class="pillar-box" style="border-left-color: var(--sya-yellow);">
+                        <h5>2017+ — Expansion</h5>
+                        <p class="small text-muted mb-0">Scaling educational initiatives across provinces.</p>
+                    </div>
+                    <div class="pillar-box" style="border-left-color: var(--sya-green);">
+                        <h5>Today — Modern Solutions</h5>
+                        <p class="small text-muted mb-0">A comprehensive learning solutions organisation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	
+
+    <!-- Impact Stats -->
+    <section class="py-4 bg-white">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-card">
+                        <div class="stat-num">80k+</div>
+                        <p class="small fw-bold text-muted mb-0">Learners Impacted</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-card">
+                        <div class="stat-num">72+</div>
+                        <p class="small fw-bold text-muted mb-0">Schools Reached</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-card">
+                        <div class="stat-num">128k+</div>
+                        <p class="small fw-bold text-muted mb-0">Engagements</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-card">
+                        <div class="stat-num">10+</div>
+                        <p class="small fw-bold text-muted mb-0">Years Excellence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Four Pillars -->
+    <section id="solutions" class="bg-white">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-down">
+                <h2 class="fw-bold">How We Support Success</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pillar-card h-100">
+                        <i class="fas fa-layer-group text-primary fs-3 mb-3"></i>
+                        <h6 class="fw-bold">Content Development</h6>
+                        <p class="small text-muted">High-quality curriculum-aligned resources and study guides.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pillar-card h-100">
+                        <i class="fas fa-chart-pie text-success fs-3 mb-3"></i>
+                        <h6 class="fw-bold">Assessment & Analytics</h6>
+                        <p class="small text-muted">Identifying learning gaps and monitoring student progress.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="pillar-card h-100">
+                        <i class="fas fa-headset text-warning fs-3 mb-3"></i>
+                        <h6 class="fw-bold">Learner Support</h6>
+                        <p class="small text-muted">Academic Q&A, live revision, and holiday programmes.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="pillar-card h-100">
+                        <i class="fas fa-mobile-alt text-danger fs-3 mb-3"></i>
+                        <h6 class="fw-bold">Digital Platforms</h6>
+                        <p class="small text-muted">Curriculum-aligned delivery through smart digital systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	
+<!-- Enhanced Tighter Gallery Section -->
+<section id="gallery" class="py-0">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <!-- 12 Images with Staggered Entrance -->
+            <div class="col-6 col-md-3" data-aos="zoom-in-up" data-aos-delay="100"><img src="Images/3.jpg" class="gallery-img-tight" alt="Learning"></div>
+            <div class="col-6 col-md-3" data-aos="zoom-in-up" data-aos-delay="200"><img src="Images/11.jpg" class="gallery-img-tight" alt="Students"></div>
+            <div class="col-6 col-md-3" data-aos="zoom-in-up" data-aos-delay="300"><img src="Images/16.jpg" class="gallery-img-tight" alt="Classroom"></div>
+            <div class="col-6 col-md-3" data-aos="zoom-in-up" data-aos-delay="400"><img src="Images/22.jpg" class="gallery-img-tight" alt="Digital"></div>
+            
+            <div class="col-6 col-md-3" data-aos="zoom-in-up" data-aos-delay="100"><img src="Images/31.jpg" class="gallery-img-tight" alt="Tech"></div>
+            <div class="col-6 col-md-3" data-aos="zoom-in-up" data-aos-delay="200"><img src="Images/55.jpg" class="gallery-img-tight" alt="Support"></div>
+            <div class="col-6 col-md-3" data-aos="zoom-in-up" data-aos-delay="300"><img src="Images/80.jpg" class="gallery-img-tight" alt="Group"></div>
+            <div class="col-6 col-md-3" data-aos="zoom-in-up" data-aos-delay="400"><img src="Images/40.jpg" class="gallery-img-tight" alt="Community"></div>
+            
+            <div class="col-6 col-md-3" data-aos="zoom-in-up" data-aos-delay="100"><img src="Images/56.jpg" class="gallery-img-tight" alt="Leader"></div>
+            <div class="col-6 col-md-3" data-aos="zoom-in-up" data-aos-delay="200"><img src="Images/71.jpg" class="gallery-img-tight" alt="Mentor"></div>
+            <div class="col-6 col-md-3" data-aos="zoom-in-up" data-aos-delay="300"><img src="Images/63.jpg" class="gallery-img-tight" alt="Growth"></div>
+            <div class="col-6 col-md-3" data-aos="zoom-in-up" data-aos-delay="400"><img src="Images/55.jpg class="gallery-img-tight" alt="Teamwork"></div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .gallery-img-tight {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
+        filter: grayscale(30%);
+    }
+    .gallery-img-tight:hover {
+        transform: scale(1.08);
+        filter: grayscale(0%);
+        z-index: 10;
+        position: relative;
+    }
+</style>
+	
+	  <!-- Partners Section (Who we work with) -->
+    <section class="bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Who We Work With</h2>
+                <p class="text-muted">Working together to strengthen education and transform lives.</p>
+            </div>
+            <div class="row row-cols-2 row-cols-md-6 g-4 text-center">
+                <div class="col partner-icon-box"><i class="fas fa-school"></i><span class="small fw-bold"> Schools</span></div>
+                <div class="col partner-icon-box"><i class="fas fa-university"></i><span class="small fw-bold"> Institutions</span></div>
+                <div class="col partner-icon-box"><i class="fas fa-landmark"></i><span class="small fw-bold"> Government</span></div>
+                <div class="col partner-icon-box"><i class="fas fa-hand-holding-heart"></i><span class="small fw-bold"> NGOs</span></div>
+                <div class="col partner-icon-box"><i class="fas fa-briefcase"></i><span class="small fw-bold"> Corporate</span></div>
+                <div class="col partner-icon-box"><i class="fas fa-laptop-code"></i><span class="small fw-bold"> Digital Platforms</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section (Side-by-Side) -->
+    <section id="leadership" class="bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" data-aos="fade-up">Credible Leadership</h2>
+                <p class="text-muted" data-aos="fade-up" data-aos-delay="100">Our team is committed to educational transformation and learner success.</p>
+            </div>
+            <div class="row g-4">
+                <!-- Leader 1 -->
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
+                    <div class="leader-card">
+                        <img src="Images/ceo.jpg" class="leader-img" alt="Zakheni Ngubo">
+                        <div class="leader-body">
+                            <h5 class="fw-bold mb-1">Zakheni Ngubo</h5>
+                            <p class="text-sya-green fw-bold small mb-3">Founder</p>
+                            <p class="small text-muted">Zakheni founded Syafunda in 2013 with a vision of using technology and innovation to expand access to quality education based on his own experiences in Umlazi.</p>
+                            <div class="mt-3"><i class="fab fa-linkedin text-muted me-2"></i><i class="fab fa-twitter text-muted"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Leader 2 -->
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800">
+                    <div class="leader-card">
+                        <img src="Images/ceo.jpg" class="leader-img" alt="Raymond Biya">
+                        <div class="leader-body">
+                            <h5 class="fw-bold mb-1">Raymond Biya</h5>
+                            <p class="text-primary fw-bold small mb-3">Chief Executive Officer</p>
+                            <p class="small text-muted">An educator and curriculum specialist, Raymond is committed to improving learner outcomes through educational excellence, innovation, and strategic partnerships.</p>
+                            <div class="mt-3"><i class="fab fa-linkedin text-muted me-2"></i><i class="fab fa-twitter text-muted"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="bg-sya-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9" data-aos="zoom-in" data-aos-duration="800">
+                    <div class="contact-wrapper">
+                        <div class="text-center mb-5">
+                            <h2 class="fw-bold">Partner With Us</h2>
+                            <p class="text-muted">Let's build better learning outcomes together.</p>
+                        </div>
+                        <form>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Full Name</label>
+                                    <input type="text" class="form-control" placeholder="John Doe" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Organisation</label>
+                                    <input type="text" class="form-control" placeholder="Company/School Name">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Email Address</label>
+                                    <input type="email" class="form-control" placeholder="name@email.com" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Reason For Enquiry</label>
+                                    <select class="form-select form-control">
+                                        <option>Partnership Inquiry</option>
+                                        <option>Book a Consultation</option>
+                                        <option>Request a Meeting</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label small fw-bold">Message</label>
+                                    <textarea class="form-control" rows="4" placeholder="How can we help you?"></textarea>
+                                </div>
+                                <div class="col-12 text-center mt-4">
+                                    <button class="btn btn-sya-green btn-lg btn-partner border-0 w-100" style="background:var(--sya-green)">Send Message <i class="fas fa-paper-plane ms-2"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Light Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <span class="footer-logo">Sya<span class="text-sya-green">funda</span></span>
+                    <p class="mt-3 small">Syafunda (meaning "We Are Learning") is a South African education leader committed to improving outcomes through innovation.</p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#" class="text-muted fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-muted fs-5"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-muted fs-5"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <h6 class="fw-bold text-dark mb-4">Quick Links</h6>
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#story" class="footer-link">Our Story</a>
+                    <a href="#solutions" class="footer-link">Solutions</a>
+                    <a href="#leadership" class="footer-link">Leadership</a>
+                </div>
+                <div class="col-md-3 col-6">
+                    <h6 class="fw-bold text-dark mb-4">Contact Info</h6>
+                    <p class="small mb-2"><i class="fas fa-phone text-sya-green me-2"></i> +27 65 855 5337</p>
+                    <p class="small mb-2"><i class="fas fa-envelope text-sya-green me-2"></i> Nkosi@syafunda.co.za</p>
+                    <p class="small"><i class="fas fa-map-marker-alt text-sya-green me-2"></i> Johannesburg, South Africa</p>
+                </div>
+            </div>
+            <hr class="mt-5 mb-4 opacity-50">
+            <div class="text-center small">
+                © 2024 Syafunda. All Rights Reserved. Committed to Educational Excellence.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize snappy animations
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: 'ease-out-quad'
+        });
+    </script>
+</body>
+</html>
